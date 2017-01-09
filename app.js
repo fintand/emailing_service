@@ -1,10 +1,16 @@
+require('dotenv').config();
 var express    = require('express');
 var app        = express();
+var path       = require('path');
 var mongoose   = require('mongoose');
 var bodyParser = require('body-parser');
 var helmet     = require('helmet');
 var config     = require('./config');
 var port       = process.env.PORT || 8080;
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hjs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
